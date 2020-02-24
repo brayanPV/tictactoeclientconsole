@@ -104,23 +104,34 @@ namespace TicTacToeClientConsole
         public String MostrarTablero()
         {
             String cadena = "   0   1   2\n";
-            int c = 0;
-            char q;
-            //aqui jhon tiene char[], pero eso da error
+            char[] aux = new char[9];
+            char msg=' ';
+            
+            // int c = 0;
+            for (int i = 0; i < tablero.GetLength(0); i++)
+            {
+                cadena += i + " ";
+                for (int j = 0; j < tablero.GetLength(1); j++)
+                {
+                    for (int k = 0; k < aux.Length; k++)
+                    {
+                        aux[k] = tablero[i, j];
+                        if (aux[k] == 0)
+                        {
+                            msg = ' ';
+                        }
+                        else
+                        {
+                            msg = aux[k];
+                        }
+                    }
+                    cadena += "[" + msg + "]";
+                }
+                cadena += "\n";
+                //  c++;
 
-            /*foreach (char[] x in tablero)
-             {
-                 cadena += c + " ";
-                 foreach (char y in x)
-                 {
-                     if (y==0) {
-                         q = ' ';
-                     }
-                     cadena += "[" + q + "]";
-                 }
-                 cadena += "\n";
-                 c++;
-             }*/
+            }
+
             return cadena;
         }
 
