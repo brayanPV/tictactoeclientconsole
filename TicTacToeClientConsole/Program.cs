@@ -101,14 +101,14 @@ static void Main(string[] args)
                 Boolean columnaValida = true;
                 String columna = "";
                 String fila = "";
-                String movimiento = "";
+                String movimiento=""; 
                 Regex regex = new Regex("(0|1|2)");
                 while (columnaValida) {
                     Console.WriteLine("Ingrese el valor de la COLUMNA (0, 1, 2) "
                             + "la cual quiere marcar...");
                     columna = Console.ReadLine();
                     if (regex.IsMatch(columna)) {
-                        movimiento += "-" + columna;
+                        movimiento += columna;
                         columnaValida = false;
                     }
                     else {
