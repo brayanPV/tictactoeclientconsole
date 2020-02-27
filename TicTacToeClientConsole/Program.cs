@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 using System.Net.Sockets;
 
 namespace TicTacToeClientConsole
@@ -8,51 +10,48 @@ namespace TicTacToeClientConsole
         static void Main(string[] args)
         {
 
+            Fachada fachada = new Fachada();
+            
+                // Establish the remote endpoint for the socket.  
+                // This example uses port 11000 on the local computer. 
+                IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+                IPAddress ipAddress = ipHostInfo.AddressList[0];
+                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 8090);
 
-            Char[,] arr = new Char[3, 3];
-            arr[0, 0] = 'X';
-            arr[0, 1] = '\0';
-            arr[0, 2] = 'O';
+                // Create a TCP/IP  socket.  
+                Socket cliente = new Socket(ipAddress.AddressFamily,
+                    SocketType.Stream, ProtocolType.Tcp);
+                cliente.Connect(remoteEP);
+            String enviar;
+                byte[] b = new byte[1024];
+                int k = cliente.Receive(b);
+                string szReceived = System.Text.Encoding.ASCII.GetString(b, 0, k);
+            NetworkStream net =  new NetworkStream(cliente);
+            BinaryWriter o = new BinaryWriter(net);    
 
-            arr[1, 0] = 'O';
-            arr[1, 1] = 'X';
-            arr[1, 2] = 'X';
+            Console.WriteLine(szReceived);
+            Console.ReadLine();
 
-            arr[2, 0] = '\0';
-            arr[2, 1] = '\0';
-            arr[2, 2] = 'O';
+            while (true) {
 
-            String cadena = "   0   1   2\n";
-            char[] aux = new char[9];
-            char msg = ' ';
+                /* 
+                 *Ingresar nombre de usuario 
+                 */
+                Console.WriteLine();
+                enviar = Console.ReadLine();
 
-            // int c = 0;
-            for (int i = 0; i < arr.GetLength(0); i++)
-            {
-                cadena += i + " ";
-                for (int j = 0; j < arr.GetLength(1); j++)
-                {
-                    for (int k = 0; k < aux.Length; k++)
-                    {
-                        aux[k] = arr[i, j];
-                        if (aux[k] == 0)
-                        {
-                            msg = ' ';
-                        }
-                        else
-                        {
-                            msg = aux[k];
-                        }
-                    }
-                    cadena += "[" + msg + "]";
-                }
-                cadena += "\n";
-                //  c++;
-                
+                b = System.Text.Encoding.Default.GetBytes(enviar);
+                cliente.Send(b);
+                Console.ReadLine();
 
             }
-            Console.WriteLine(cadena);
-            Console.ReadLine();
+
+
+            
+
+
+            
+
         }
     }
 }
