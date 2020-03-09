@@ -8,21 +8,17 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\stive\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\stive\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stive\\source\\repos\\TicTacToeClientConsole\\TicTacToeClientConsole\\TicTacToeClientConsole.csproj",
+      "projectUniqueName": "C:\\Users\\stive\\Documents\\repos\\TicTacToeClientConsole\\TicTacToeClientConsole\\TicTacToeClientConsole.csproj",
       "projectName": "TicTacToeClientConsole",
-      "projectPath": "C:\\Users\\stive\\source\\repos\\TicTacToeClientConsole\\TicTacToeClientConsole\\TicTacToeClientConsole.csproj",
+      "projectPath": "C:\\Users\\stive\\Documents\\repos\\TicTacToeClientConsole\\TicTacToeClientConsole\\TicTacToeClientConsole.csproj",
       "packagesPath": "C:\\Users\\stive\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stive\\source\\repos\\TicTacToeClientConsole\\TicTacToeClientConsole\\obj\\",
+      "outputPath": "C:\\Users\\stive\\Documents\\repos\\TicTacToeClientConsole\\TicTacToeClientConsole\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\stive\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

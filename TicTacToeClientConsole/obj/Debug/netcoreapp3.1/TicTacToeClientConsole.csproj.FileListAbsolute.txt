@@ -9,3 +9,14 @@ C:\Users\stive\source\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\De
 C:\Users\stive\source\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\Debug\netcoreapp3.1\TicTacToeClientConsole.pdb
 C:\Users\stive\source\repos\TicTacToeClientConsole\TicTacToeClientConsole\obj\Debug\netcoreapp3.1\TicTacToeClientConsole.dll
 C:\Users\stive\source\repos\TicTacToeClientConsole\TicTacToeClientConsole\obj\Debug\netcoreapp3.1\TicTacToeClientConsole.pdb
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\Debug\netcoreapp3.1\TicTacToeClientConsole.exe
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\Debug\netcoreapp3.1\TicTacToeClientConsole.deps.json
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\Debug\netcoreapp3.1\TicTacToeClientConsole.runtimeconfig.json
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\Debug\netcoreapp3.1\TicTacToeClientConsole.runtimeconfig.dev.json
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\Debug\netcoreapp3.1\TicTacToeClientConsole.dll
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\bin\Debug\netcoreapp3.1\TicTacToeClientConsole.pdb
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\obj\Debug\netcoreapp3.1\TicTacToeClientConsole.csprojAssemblyReference.cache
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\obj\Debug\netcoreapp3.1\TicTacToeClientConsole.AssemblyInfoInputs.cache
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\obj\Debug\netcoreapp3.1\TicTacToeClientConsole.AssemblyInfo.cs
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\obj\Debug\netcoreapp3.1\TicTacToeClientConsole.dll
+C:\Users\stive\Documents\repos\TicTacToeClientConsole\TicTacToeClientConsole\obj\Debug\netcoreapp3.1\TicTacToeClientConsole.pdb

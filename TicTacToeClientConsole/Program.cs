@@ -18,7 +18,7 @@ namespace TicTacToeClientConsole
         {
             cbuf = new char[512];
             recibido = "";
-            leer.Read(cbuf);
+            leer.Read(buffer: cbuf);
             foreach (char c in cbuf)
             {
                 recibido += c;
@@ -39,40 +39,42 @@ static void Main(string[] args)
         {
 
             Fachada fachada = new Fachada();
-            
-                // Establish the remote endpoint for the socket.  
-                // This example uses port 11000 on the local computer. 
-                IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-                IPAddress ipAddress = ipHostInfo.AddressList[0];
-                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 8090);
 
-                // Create a TCP/IP  socket.  
-                Socket cliente = new Socket(ipAddress.AddressFamily,
-                    SocketType.Stream, ProtocolType.Tcp);
-                cliente.Connect(remoteEP);
-                NetworkStream net =  new NetworkStream(cliente);
-                StreamWriter escribir = new StreamWriter(net);
-                StreamReader leer = new StreamReader(net);
-                String mensaje = recibirSocket(leer);
-                Console.WriteLine(mensaje);
-                
-           
-            
+
+            string host = "192.168.1.54";
+            int port = 8088;
+            //int timeout = 5000;
+
+            using var client = new TcpClient();
+
+            //await client.ConnectAsync(host, port);
+            client.Connect(host, port);
+
+            using var netstream = client.GetStream();
+            using StreamWriter writer = new StreamWriter(netstream);
+            using StreamReader reader = new StreamReader(netstream);
+            writer.AutoFlush = true;
+            String mensaje = recibirSocket(reader);
+            //Recibe el primer mensaje del servidor
+            Console.WriteLine(mensaje);
+
+
+
 
             while (true) {
 
                 /* 
-                 *Ingresar nombre de usuario -- Hasta el momento esto no funciona
+                 *Ingresar nombre de usuario -- ya funciona
                 */
 
                 Console.WriteLine();
                 String enviar = Console.ReadLine();
-                escribir.Write(enviar);
-                escribir.Flush();
+                writer.Write(enviar);
+                writer.Flush();
 
 
                 //AQUI RECIBO EL SEGUNDO MENSAJE
-                String puntaje = recibirSocket(leer);
+                String puntaje = recibirSocket(reader);
                 if (puntaje.Equals("false"))
                 {
                     Console.WriteLine("Este usuario ya inicio sesion en otro pc\n" +
@@ -88,8 +90,8 @@ static void Main(string[] args)
                 /*
                  * Retorna estado de la partida 
                 */
-                fachada.interpretarEstadoPartidaSencillo(recibirSocket(leer));
-                Console.WriteLine(fachada.MostrarTablero());
+                fachada.interpretarEstadoPartidaSencillo(recibirSocket(reader));
+                Console.WriteLine(fachada.mostrarTablero());
                 if (fachada.Ganador != null) {
                     Console.WriteLine("Usted ha" + fachada.Ganador + " esta partida");
                 }
@@ -97,49 +99,37 @@ static void Main(string[] args)
                 /* 
                 Esperando turno    
                 */
-                Console.WriteLine(recibirSocket(leer));
-                Boolean columnaValida = true;
-                String columna = "";
-                String fila = "";
-                String movimiento=""; 
-                Regex regex = new Regex("(0|1|2)");
-                while (columnaValida) {
-                    Console.WriteLine("Ingrese el valor de la COLUMNA (0, 1, 2) "
-                            + "la cual quiere marcar...");
-                    columna = Console.ReadLine();
-                    if (regex.IsMatch(columna)) {
-                        movimiento += columna;
-                        columnaValida = false;
-                    }
-                    else {
-                        Console.WriteLine("Valor invalido, intente de nuevo");
-                    }
-                }
-                Boolean filaValida = true;
-                while (filaValida) {
-                    Console.WriteLine("Ingrese el valor de la FILA (0, 1, 2) "
-                        + "la cual quiere marcar...");
-                    fila = Console.ReadLine();
-                    if (regex.IsMatch(fila))
+                Console.WriteLine(recibirSocket(reader));
+                String pos = "";
+                int movimiento=0;
+                Boolean valido = true;
+                while (valido)
+                {
+                    Regex regex = new Regex("(0|1|2|3|4|5|6|7|8)");
+                    Console.WriteLine("Ingrese la posicion a marcar");
+                    pos = Console.ReadLine();
+                    if (regex.IsMatch(pos))
                     {
-                        movimiento += "-" + fila;
-                        filaValida = false;
+                        movimiento = int.Parse(pos);
+                        valido = false;
                     }
-                    else {
+                    else
+                    {
                         Console.WriteLine("Valor invalido, intente de nuevo");
                     }
                 }
+
                 /*
                  * Envia al server las coordenadas
                  * 
                  */
-                escribir.Write(movimiento);
-                escribir.Flush();
+                writer.Write(movimiento);
+                writer.Flush();
                 /*
                  * Muestra estado de la partida
                  */
-                fachada.interpretarEstadoPartida(recibirSocket(leer));
-                Console.WriteLine(fachada.MostrarTablero());
+                fachada.interpretarEstadoPartida(recibirSocket(reader));
+                Console.WriteLine(fachada.mostrarTablero());
                 if (fachada.Ganador != null) {
                     Console.WriteLine("Usted ha " + fachada.Ganador + " esta Partida");
                 } else if(!fachada.MovimientoValido){

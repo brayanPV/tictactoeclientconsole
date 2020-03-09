@@ -6,7 +6,7 @@ namespace TicTacToeClientConsole
 {
     class Fachada
     {
-        private char[,] tablero;
+        private char[] tablero;
         private Boolean movimientoValido;
         private Boolean miTurno;
         private String ganador;
@@ -17,7 +17,7 @@ namespace TicTacToeClientConsole
 
         public Fachada()
         {
-            this.tablero = new char[3, 3];
+            this.tablero = new char[9];
         }
 
         public void interpretarEstadoPartidaSencillo(String estado)
@@ -90,18 +90,18 @@ namespace TicTacToeClientConsole
         public void armarTablero(String tablero)
         {
             String[] mensaje = tablero.Split(",");
-            this.tablero[0, 0] = mensaje[0][0];
-            this.tablero[0, 1] = mensaje[1][0];
-            this.tablero[0, 2] = mensaje[2][0];
-            this.tablero[1, 0] = mensaje[3][0];
-            this.tablero[1, 1] = mensaje[4][0];
-            this.tablero[1, 2] = mensaje[5][0];
-            this.tablero[2, 0] = mensaje[6][0];
-            this.tablero[2, 1] = mensaje[7][0];
-            this.tablero[2, 2] = mensaje[8][0];
+            this.tablero[0] = mensaje[0][0];
+            this.tablero[1] = mensaje[1][0];
+            this.tablero[2] = mensaje[2][0];
+            this.tablero[3] = mensaje[3][0];
+            this.tablero[4] = mensaje[4][0];
+            this.tablero[5] = mensaje[5][0];
+            this.tablero[6] = mensaje[6][0];
+            this.tablero[7] = mensaje[7][0];
+            this.tablero[8] = mensaje[8][0];
         }
 
-        public String MostrarTablero()
+        /*public String MostrarTablero()
         {
             String cadena = "   0   1   2\n";
             char[] aux = new char[9];
@@ -130,6 +130,30 @@ namespace TicTacToeClientConsole
                 cadena += "\n";
                 //  c++;
 
+            }
+
+            return cadena;
+        }*/
+
+        public String mostrarTablero()
+        {
+            String cadena = "   0   1   2\n";
+            int cont = 0;
+
+            cadena += cont + "";
+            for (int i = 0; i < tablero.Length; i++)
+            {
+
+                if (tablero[i] == 0)
+                {
+                    tablero[i] = ' ';
+                }
+                cadena += "[ " + tablero[i] + " ]";
+                if (i == 2 || i == 5)
+                {
+                    cont++;
+                    cadena += "\n" + cont;
+                }
             }
 
             return cadena;

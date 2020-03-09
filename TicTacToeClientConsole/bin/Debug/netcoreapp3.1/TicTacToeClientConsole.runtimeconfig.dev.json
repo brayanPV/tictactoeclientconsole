@@ -2,8 +2,7 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
       "C:\\Users\\stive\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\stive\\.nuget\\packages",
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "C:\\Users\\stive\\.nuget\\packages"
     ]
   }
 }
